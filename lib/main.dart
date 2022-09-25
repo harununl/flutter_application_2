@@ -4,7 +4,12 @@ void main() => runApp(MaterialApp(
       home: Home(),
     ));
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +101,7 @@ class Home extends StatelessWidget {
         ),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 33, 31, 31),
         child: ListView(
           children: const <Widget>[
             DrawerHeader(
@@ -105,7 +110,8 @@ class Home extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.w800,
-                      letterSpacing: 3.0)),
+                      letterSpacing: 3.0,
+                      color: Colors.white)),
             ),
             ListTile(
               title: Text(
@@ -142,6 +148,14 @@ class Home extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                     letterSpacing: 2.0),
               ),
+            ),
+            Divider(
+              height: 30.0,
+            ),
+            Icon(
+              Icons.exit_to_app,
+              size: 70.0,
+              color: Colors.white,
             )
           ],
         ),
