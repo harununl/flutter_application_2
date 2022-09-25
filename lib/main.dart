@@ -10,6 +10,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,36 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  level += 1;
+                });
+              },
+              child: Icon(Icons.add),
+              backgroundColor: Colors.grey[800],
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  level -= 1;
+                  if (level <= 0) {
+                    level = 0;
+                  }
+                });
+              },
+              child: Icon(Icons.remove),
+              backgroundColor: Colors.grey[800],
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -80,7 +112,21 @@ class _HomeState extends State<Home> {
                   letterSpacing: 2.0,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 30.0),
+            SizedBox(height: 20.0),
+            Text(
+              'LEVEL',
+              style: TextStyle(color: Colors.grey, letterSpacing: 2.0),
+            ),
+            SizedBox(height: 20.0),
+            Text(
+              '$level',
+              style: TextStyle(
+                  color: Colors.amberAccent,
+                  fontSize: 28.0,
+                  letterSpacing: 2.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20.0),
             Row(
               children: <Widget>[
                 Icon(
